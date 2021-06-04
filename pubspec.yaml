@@ -53,8 +53,8 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.0
 
 flutter_native_splash:
-  color: '#202020'
-  image: 'assets/images/fuse.png'
+  color: '#ffffff'
+  image: 'assets/images/icon.png'
   android: true
   ios: true
 
