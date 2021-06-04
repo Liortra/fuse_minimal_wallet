@@ -1,6 +1,6 @@
 # fuse_minimal_wallet
-
-Hi, this is my minimal wallet by FUSE.IO
+<img src="assets/images/fuse.png">
+Hi, this is my minimal wallet for FUSE.IO
 
 ## Made by
  Lior Trahctman
