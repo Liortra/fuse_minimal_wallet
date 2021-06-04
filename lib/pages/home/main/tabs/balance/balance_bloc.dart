@@ -21,13 +21,10 @@ class BalanceBloc extends Cubit<BaseBalanceState> {
       emit(ResultState(tokenSet.toList()));
     } on FuseHttpError catch (e) {
       emit(ErrorBalanceState(e.message, error: e));
-    } catch(e){
-      var message = "Catch: Something wrong, check again";
+    } catch(e,stackTrace){
+      var message = "Catch: Something wrong, check again $e";
+      print("show error: $e stack: $stackTrace");
       emit(ErrorBalanceState(message, error: e));
     }
-  }
-
-  addToken(String contractAddressHash){
-
   }
 }

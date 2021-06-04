@@ -4,8 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fuse_minimal_wallet/widgets/addtokenbottomsheet/add_token_bloc.dart';
-import 'package:fuse_minimal_wallet/widgets/button/button.dart';
-import 'package:fuse_minimal_wallet/widgets/edittext/edittext.dart';
+import 'package:fuse_minimal_wallet/widgets/widgets.dart';
 import 'package:get_it/get_it.dart';
 
 import 'add_token_states.dart';
@@ -48,6 +47,7 @@ class _AddTokenWidgetState extends State<AddTokenWidget> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -60,7 +60,8 @@ class _AddTokenWidgetState extends State<AddTokenWidget> {
             SizedBox(height: 10,),
             _editTextToken(),
             SizedBox(height: 10,),
-            //add error text
+            Expanded(child: _errorText()),
+            SizedBox(height: 10,),
             Expanded(child: _button()),
           ],
         ),
@@ -122,6 +123,17 @@ class _AddTokenWidgetState extends State<AddTokenWidget> {
             return type == ButtonStateType.LOADING ? loader : button;
           }),
       );
+  }
+  
+  Widget _errorText(){
+    return BlocBuilder<AddTokenBloc, BaseAddTokenState>(
+        bloc: _bloc,
+        buildWhen: (prev, current) => current is TextFieldTokenState,
+        builder: (context, state) {
+          final error = (state is TextFieldTokenState) ? state.error : null;
+          print("show edit text state: $error");
+          return Text("$error");
+        });
   }
 
   @override

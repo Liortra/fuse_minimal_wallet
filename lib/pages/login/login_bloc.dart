@@ -32,20 +32,8 @@ class LoginBloc extends Cubit<BaseLoginState> {
       await _balanceRepository.getBalance();
       emit(FinishLoginState());
     } on FuseHttpError catch (e) {
-      var message = "";
-      switch (e.status) {
-        case "0":
-          print("SUCCESS GET HttpError");
-          final error = e.message as FuseHttpError;
-          message = error.message;
-          break;
-        default:
-          print("FAILED GET HttpError");
-          message = "Something wrong, check again";
-          break;
-      }
-      emit(ErrorLoginState(message, error: e));
-    } catch(e,stackTrace){
+      emit(ErrorLoginState(e.message, error: e));
+      } catch(e,stackTrace){
       var message = "Catch: Something wrong, check again $e";
       print("show error: $e stack: $stackTrace");
       emit(ErrorLoginState(message, error: e));

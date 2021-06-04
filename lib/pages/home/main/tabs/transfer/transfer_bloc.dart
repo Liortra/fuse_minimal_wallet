@@ -14,8 +14,9 @@ class TransferBloc extends Cubit<BaseTransferState> {
       emit(ResultState(result!));
     } on FuseHttpError catch (e) {
       emit(ErrorTransferState(e.message, error: e));
-    } catch(e){
-      var message = "Catch: Something wrong, check again";
+    } catch(e,stackTrace){
+      var message = "Catch: Something wrong, check again $e";
+      print("show error: $e stack: $stackTrace");
       emit(ErrorTransferState(message, error: e));
     }
   }

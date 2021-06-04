@@ -27,9 +27,11 @@ class AddTokenBloc extends Cubit<BaseAddTokenState> {
       await _tokenRepository.addNewToken(_currentToken!);
       emit(FinishAddToken());
     }on FuseHttpError catch(e){
-      print("show FuseHttpError: ${e.message}");
-    }catch(e){
-      print("show error: $e");
+      emit(TextFieldTokenState(error:e.message));
+    } catch(e,stackTrace){
+      var message = "Catch: Something wrong, check again $e";
+      print("show error: $e stack: $stackTrace");
+      emit(TextFieldTokenState(error:message));
     }
     emit(ButtonState(ButtonStateType.ENABLE));
   }
