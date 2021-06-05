@@ -25,11 +25,14 @@ A: First, we can use the API call for Get balance for multiple addresses, to do 
 then, the design can be the same but we need to add a hamburger button that will pop with list of the users that we can switch between them.
 
 ## Extra
-1. In the text box I entered in advance the information that should be to make it easier. Feel free to change it or enter it yourself in the following places:
-* login_page.dart in line 28.
-* add_toke_bottom_sheet.dart in line 47 or 48.
-*** read the command line before in each file  ***
-2. I add a short clip of the app if you want to see it in action instead of download the repository, this is in assets/video.
+1. I add a short clip of the app if you want to see it in action instead of download the repository, this is in assets/video.
+2. In the text box I entered in advance the information that should be to make it easier. Feel free to change it or enter it yourself in the following places:
+* login_page.dart in line 28.(addressHash)
+* add_toke_bottom_sheet.dart in line 47 or 48.(contractAddressHash)
+*** read the command line before in each file  *** 
+*p.s*
+The tests was with the addressHash in line 28, and the results that i got it by this addressHash. 
+
 
 Hope you will enjoy my app, thanks
 

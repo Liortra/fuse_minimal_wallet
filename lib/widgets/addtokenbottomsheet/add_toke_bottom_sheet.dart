@@ -42,7 +42,7 @@ class _AddTokenWidgetState extends State<AddTokenWidget> {
     if(kDebugMode){
       /*
         FUSE.IO, you can change it or put it in comment
-        line 47 will add token, line 48 will not add token(because he exist)
+        line 47 will add token, line 48 will not add token(because he exist with my addresshash)
        */
       _textEditorController.text = "0xbf0718762B7951D56C52Cc7f75e4fa665a7FF0E5";
       // _textEditorController.text = "0x495d133b938596c9984d462f007b676bdc57ecec";
