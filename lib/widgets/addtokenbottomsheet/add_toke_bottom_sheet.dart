@@ -40,7 +40,7 @@ class _AddTokenWidgetState extends State<AddTokenWidget> {
   void initState() {
     super.initState();
     if(kDebugMode){
-      // for Leon, you can change it or put it in comment
+      // FUSE.IO, you can change it or put it in comment
       _textEditorController.text = "0x495d133b938596c9984d462f007b676bdc57ecec";
     }
 

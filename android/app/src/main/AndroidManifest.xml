@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fuse_minimal_wallet">
    <application
-        android:label="fuse_minimal_wallet"
+        android:label="Fuse Minimal Wallet"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
