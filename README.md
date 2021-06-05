@@ -28,7 +28,7 @@ then, the design can be the same but we need to add a hamburger button that will
 * login_page.dart in line 28.(addressHash)
 * add_toke_bottom_sheet.dart in line 47 or 48.(contractAddressHash)
 
-*** read the command before in each file  ***
+*** read the comment before in each file  ***
 
 *p.s*
 
