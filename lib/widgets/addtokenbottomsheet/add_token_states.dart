@@ -21,3 +21,10 @@ class ButtonState extends BaseAddTokenState {
 }
 
 class FinishAddToken extends BaseAddTokenState {}
+
+class ErrorAddTokenState extends BaseAddTokenState {
+  final String message;
+  final dynamic error;
+
+  ErrorAddTokenState(this.message, {this.error});
+}

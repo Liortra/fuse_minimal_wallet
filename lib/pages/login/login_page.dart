@@ -24,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
     if(kDebugMode){
+      // for Leon, you can change it or put it in comment
       _textEditorController.text = "0x71D4FbA2bF3cA87c7555963428595Bb2B2da03b0";
     }
 

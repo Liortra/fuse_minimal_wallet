@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fuse_minimal_wallet/widgets/addtokenbottomsheet/add_token_bloc.dart';
@@ -32,11 +33,17 @@ class _AddTokenWidgetState extends State<AddTokenWidget> {
 
   StreamSubscription? _streamSubscription;
   final _bloc = GetIt.I<AddTokenBloc>();
+  final _textEditorController = TextEditingController();
 
 
   @override
   void initState() {
     super.initState();
+    if(kDebugMode){
+      // for Leon, you can change it or put it in comment
+      _textEditorController.text = "0x495d133b938596c9984d462f007b676bdc57ecec";
+    }
+
     _streamSubscription = _bloc.stream
         .where((state) => state is FinishAddToken)
         .listen((_) {
@@ -58,7 +65,7 @@ class _AddTokenWidgetState extends State<AddTokenWidget> {
           children: [
             _title(),
             SizedBox(height: 10,),
-            _editTextToken(),
+            Expanded(child: _editTextToken()),
             SizedBox(height: 10,),
             Expanded(child: _errorText()),
             SizedBox(height: 10,),
@@ -99,6 +106,7 @@ class _AddTokenWidgetState extends State<AddTokenWidget> {
             hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
             hint: "Token",
             error: error,
+            controller: _textEditorController,
             onChange: (input) => _bloc.validToken(input),
           );
         });
@@ -128,11 +136,13 @@ class _AddTokenWidgetState extends State<AddTokenWidget> {
   Widget _errorText(){
     return BlocBuilder<AddTokenBloc, BaseAddTokenState>(
         bloc: _bloc,
-        buildWhen: (prev, current) => current is TextFieldTokenState,
+        buildWhen: (prev, current) => current is ErrorAddTokenState,
         builder: (context, state) {
-          final error = (state is TextFieldTokenState) ? state.error : null;
+          final error = (state is ErrorAddTokenState) ? state.message : " ";
           print("show edit text state: $error");
-          return Text("$error");
+          return Text("$error",
+              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.start,);
         });
   }
 

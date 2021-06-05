@@ -11,24 +11,13 @@ class MainBloc extends Cubit<BaseMainState>{
   
   start() async{
    try {
-    // final balance = await _balanceRepository.getBalance(addressHash)
-   } on FuseHttpError catch(e){
-     //TODO - CHANGE HERE THE CATCH!!
-     var message = "";
-     switch (e.status) {
-       case "0":
-         print("SUCCESS GET HttpError");
-         final error = e.message as FuseHttpError;
-         message = error.message;
-         break;
-       default:
-         print("FAILED GET HttpError");
-         message = "Something wrong, check again";
-         break;
-     } //TODO - CHANGE HERE THE CATCH!!
-     emit(ErrorMainState(message, error: e));
-   } catch(e){
-     var message = "Catch: Something wrong, check again";
+    final balance = await _balanceRepository.getBalance();
+     emit(ResultState(balance!));
+   } on FuseHttpError catch (e) {
+     emit(ErrorMainState(e.message, error: e));
+   } catch(e,stackTrace){
+     var message = "Catch: Something wrong, check again $e";
+     print("show error: $e stack: $stackTrace");
      emit(ErrorMainState(message, error: e));
    }
   }

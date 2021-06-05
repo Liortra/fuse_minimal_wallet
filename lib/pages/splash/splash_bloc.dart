@@ -12,9 +12,11 @@ class SplashBloc extends Cubit<BaseSplashState>{
       final exists = await _userLocalDataSource.checkUserAddressExist();
       await Future.delayed(Duration(milliseconds: 500));
       emit(exists ? NavigateMainPageState() : NavigateLoginPageState());
-    } catch(e){
-      //todo handle error!
+    } catch(e,stackTrace){
+      // var message = "Catch: Something wrong, check again $e";
+      print("show error: $e stack: $stackTrace");
+      // emit(ErrorSplashState(message, error: e));
+      emit(NavigateLoginPageState());
     }
   }
-
 }
