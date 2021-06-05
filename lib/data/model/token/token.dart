@@ -1,12 +1,12 @@
+import 'package:basic_utils/basic_utils.dart';
 import 'package:fuse_minimal_wallet/data/model/baseresponse/base_response.dart';
 import 'package:fuse_minimal_wallet/data/model/contract/contract.dart';
+import 'package:fuse_minimal_wallet/utils/utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'token.g.dart';
 @JsonSerializable()
 class Token extends BaseResult{
-
-  static const DEFAULT_SYMBOL = "FUSE";
 
   @JsonKey(name:"balance")
   final String? balance;
@@ -22,8 +22,10 @@ class Token extends BaseResult{
   String get label => "$balanceDecimal $symbol";
 
   String get balanceDecimal{
-    //todo add decimal dot
-    return balance??"";
+    var length =  balance!.length - int.parse("$decimals");
+    return balance!.substring(length).length > Const.REMAINDER ?
+    StringUtils.addCharAtPosition("${balance!.substring(0,length + Const.REMAINDER)}", ".", length) :
+    StringUtils.addCharAtPosition("$balance", ".", length);
   }
 
   Token(this.balance, this.contractAddress, this.decimals, this.symbol, this.type);
@@ -33,11 +35,11 @@ class Token extends BaseResult{
   Map<String, dynamic> toJson() => _$TokenToJson(this);
 
   factory Token.fromBalance(String? balance){
-    return Token(balance, "", "", DEFAULT_SYMBOL, "");
+    return Token(balance, "", Const.DECIMAL.toString(), Const.DEFAULT_SYMBOL, "");
   }
 
   factory Token.fromContract(Contract? contract){
-    return Token(contract?.totalSupply,"","",contract?.symbol,"");
+    return Token(contract?.totalSupply,"",contract?.decimals,contract?.symbol,"");
   }
 
   @override

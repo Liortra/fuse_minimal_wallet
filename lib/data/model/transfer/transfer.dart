@@ -1,4 +1,6 @@
+import 'package:basic_utils/basic_utils.dart';
 import 'package:fuse_minimal_wallet/data/model/baseresponse/base_response.dart';
+import 'package:fuse_minimal_wallet/utils/utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'transfer.g.dart';
 
@@ -47,7 +49,14 @@ class Transfer extends BaseResult {
   @JsonKey(name:"value")
   final String? value;
 
-  String get label => "$value $tokenSymbol";
+  String get label => "$transferDecimal $tokenSymbol";
+
+  String get transferDecimal{
+    var length =  value!.length - int.parse("$tokenDecimal");
+    return value!.substring(length).length > Const.REMAINDER ?
+      StringUtils.addCharAtPosition("${value!.substring(0,length + Const.REMAINDER)}", ".", length) :
+    StringUtils.addCharAtPosition("$value", ".", length);
+  }
 
   Transfer(
       this.blockHash,
@@ -72,6 +81,8 @@ class Transfer extends BaseResult {
       this.value);
 
   factory Transfer.fromJson(Map<String, dynamic> json) => _$TransferFromJson(json);
+
+
 
   Map<String, dynamic> toJson() => _$TransferToJson(this);
 }

@@ -6,6 +6,7 @@ import 'package:fuse_minimal_wallet/pages/home/main/main_page.dart';
 import 'package:fuse_minimal_wallet/pages/login/login_page.dart';
 import 'package:fuse_minimal_wallet/pages/splash/splash_bloc.dart';
 import 'package:fuse_minimal_wallet/pages/splash/splash_states.dart';
+import 'package:fuse_minimal_wallet/widgets/widgets.dart';
 import 'package:get_it/get_it.dart';
 
 class SplashPage extends StatefulWidget {
@@ -43,6 +44,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
         backgroundColor: Colors.white,
         body: Center(

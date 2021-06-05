@@ -39,7 +39,7 @@ class _MainPageState extends State<MainPage> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: _headerBalance(),
+          title: Center(child: _headerBalance()),
           bottom: TabBar(
             indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(50), // Creates border
@@ -68,7 +68,7 @@ class _MainPageState extends State<MainPage> {
                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                textAlign: TextAlign.center,);
          }
-         final error = "This area is undergoing maintenance";
+         final error = "Loading...";
          return Text('$error',
            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
            textAlign: TextAlign.center,);

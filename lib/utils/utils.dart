@@ -1,4 +1,3 @@
-export 'constants/AppColor.dart';
+export 'constants/app_color.dart';
 export 'errorhttpinterceptor/error_http_interceptor.dart';
-
-//todo - check the using of utils.dart
+export 'constants/const.dart';

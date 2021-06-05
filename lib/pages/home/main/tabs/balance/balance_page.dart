@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fuse_minimal_wallet/data/model/token/token.dart';
 import 'package:fuse_minimal_wallet/pages/home/main/tabs/balance/balance_bloc.dart';
 import 'package:fuse_minimal_wallet/pages/home/main/tabs/balance/balance_states.dart';
-import 'package:fuse_minimal_wallet/utils/constants/AppColor.dart';
+import 'package:fuse_minimal_wallet/utils/constants/app_color.dart';
 import 'package:fuse_minimal_wallet/widgets/addtokenbottomsheet/add_toke_bottom_sheet.dart';
 import 'package:fuse_minimal_wallet/widgets/widgets.dart';
 import 'package:get_it/get_it.dart';

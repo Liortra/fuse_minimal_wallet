@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fuse_minimal_wallet/utils/utils.dart';
 import 'package:fuse_minimal_wallet/widgets/widgets.dart';
 
 class Button extends StatefulWidget {
@@ -33,7 +34,7 @@ class _ButtonState extends State<Button> {
     return ElevatedButton(
       onPressed: widget.enable ? () => widget.onClick.call() : null,
       style: ElevatedButton.styleFrom(
-        primary: widget.backgroundColor,
+        primary: /*widget.backgroundColor*/ AppColor.kPrimaryColor ,
         onSurface: Colors.grey,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(widget.radius),
@@ -42,7 +43,7 @@ class _ButtonState extends State<Button> {
       child: Text(
         widget.title,
         style: TextStyle(
-            color: widget.textColor ?? Colors.white70,
+            color: widget.textColor ?? Colors.black,
             fontSize: widget.textSize ?? SizeConfig.font_medium),
       ),
     );
