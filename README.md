@@ -11,20 +11,23 @@ First of all, thank you very much for the opportunity.
 3. Enjoy the app.
 
 ## Open Questions
-1.
+**First Question**
 Q: How can we remove the "Add token" button?
-A: We will create an API call that will bring all the existing TOKENS and check what is in our account if we have a balance of specific token, we will show it otherwise we will show 0.
+
+A: We will create an API call that will bring all the existing tokens and check what is in our account if we have a balance of specific token.
+if we have, we will show it otherwise we will show 0.
 In each action we take in our account we will check if there was a change in one of the TOKENS and change accordingly.
 
-2.
+**Second Question**
 Q: How can we add more accounts to the wallet? So it can work not with one accounts but with multiple accounts.
+
 A: First, we can use the API call for Get balance for multiple addresses, to do this we can add a button that will add a text box for entering a user each time in the login window and by clicking the login button we will send the list of users to the server.
 then, the design can be the same but we need to add a hamburger button that will pop with list of the users that we can switch between them.
 
 ## Extra
 1. In the text box I entered in advance the information that should be to make it easier. Feel free to change it or enter it yourself in the following places:
-1) login_page.dart in line 28.
-2) add_toke_bottom_sheet.dart in line 44.
+* login_page.dart in line 28.
+* add_toke_bottom_sheet.dart in line 47 or 48.
 *** read the command line before in each file  ***
 2. I add a short clip of the app if you want to see it in action instead of download the repository, this is in assets/video.
 

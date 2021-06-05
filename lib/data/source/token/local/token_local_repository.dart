@@ -17,6 +17,10 @@ class TokenLocalRepository extends BaseUserAddressDataSource implements TokenDat
 
   @override
   Future<void> addNewToken(Token token) async {
-     _tokensCache.add(token);
+    for(var temp in _tokensCache){
+      if(temp.symbol == token.symbol)
+        throw Exception("Token already exist");
+    }
+    _tokensCache.add(token);
   }
 }

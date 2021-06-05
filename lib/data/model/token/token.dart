@@ -22,6 +22,7 @@ class Token extends BaseResult{
   String get label => "$balanceDecimal $symbol";
 
   String get balanceDecimal{
+    if(balance == "0") return "$balance";
     var length =  balance!.length - int.parse("$decimals");
     return balance!.substring(length).length > Const.REMAINDER ?
     StringUtils.addCharAtPosition("${balance!.substring(0,length + Const.REMAINDER)}", ".", length) :
@@ -39,7 +40,7 @@ class Token extends BaseResult{
   }
 
   factory Token.fromContract(Contract? contract){
-    return Token(contract?.totalSupply,"",contract?.decimals,contract?.symbol,"");
+    return Token("0","",contract?.decimals,contract?.symbol,"");
   }
 
   @override
