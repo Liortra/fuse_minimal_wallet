@@ -51,7 +51,6 @@ class Transfer extends BaseResult {
   @JsonKey(name:"value")
   final String? value;
 
-  // Future<String> get label async => "$transferDecimal $tokenSymbol =>  $sendOrReceive";
   String get label => "$transferDecimal $tokenSymbol";
 
   String get transferDecimal{
@@ -68,12 +67,6 @@ class Transfer extends BaseResult {
       StringUtils.addCharAtPosition(balance!.substring(0,length + Const.REMAINDER), ".", length) :
     StringUtils.addCharAtPosition(balance!, ".", length);
   }
-
-  // Future<String> get sendOrReceive async{
-  //   final _userLocalDataSource = GetIt.I<UserLocalDataSource>();
-  //   var status = await _userLocalDataSource.loadUserAddress();
-  //   return StringUtils.equalsIgnoreCase(status!, "$from") ? "Receive" : "Sent";
-  // }
 
   Transfer(
       this.blockHash,

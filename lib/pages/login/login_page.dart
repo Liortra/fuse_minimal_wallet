@@ -25,7 +25,8 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
     if(kDebugMode){
       // FUSE.IO, you can change it or put it in comment
-      _textEditorController.text = "0xD4C27c52763eae8D1Fbb0da59ee1B9E937a5cB1F";
+      _textEditorController.text = "0x71D4FbA2bF3cA87c7555963428595Bb2B2da03b0";
+      // _textEditorController.text = "0xD4C27c52763eae8D1Fbb0da59ee1B9E937a5cB1F";
     }
 
     _bloc.stream.listen((event) {
