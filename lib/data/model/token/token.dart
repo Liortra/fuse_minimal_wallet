@@ -24,9 +24,17 @@ class Token extends BaseResult{
   String get balanceDecimal{
     if(balance == "0") return "$balance";
     var length =  balance!.length - int.parse("$decimals");
+    var value = balance;
+    if(length <= 0){
+      var size = length.abs() + 1;
+      for(var i = 0; i< size; i++){
+        value = "0" + value!;
+        length++;
+      }
+    }
     return balance!.substring(length).length > Const.REMAINDER ?
-    StringUtils.addCharAtPosition("${balance!.substring(0,length + Const.REMAINDER)}", ".", length) :
-    StringUtils.addCharAtPosition("$balance", ".", length);
+    StringUtils.addCharAtPosition(value!.substring(0,length + Const.REMAINDER), ".", length) :
+    StringUtils.addCharAtPosition(value!, ".", length);
   }
 
   Token(this.balance, this.contractAddress, this.decimals, this.symbol, this.type);

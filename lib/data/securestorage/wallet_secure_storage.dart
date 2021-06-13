@@ -10,6 +10,7 @@ class WalletSecureStorage {
 
   Future<String?> getAddressHash()=>_storage.read(key: ADDRESS_KEY);
   Future<void> setAddressHash(String? value)=>_storage.write(key: ADDRESS_KEY, value: value);
+  Future<void> deleteAddressHash()=>_storage.delete(key: ADDRESS_KEY);
 
 
 }

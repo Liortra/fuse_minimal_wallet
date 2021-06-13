@@ -34,7 +34,7 @@ class _ButtonState extends State<Button> {
     return ElevatedButton(
       onPressed: widget.enable ? () => widget.onClick.call() : null,
       style: ElevatedButton.styleFrom(
-        primary: /*widget.backgroundColor*/ AppColor.kPrimaryColor ,
+        primary: widget.backgroundColor ?? AppColor.kPrimaryColor ,
         onSurface: Colors.grey,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(widget.radius),

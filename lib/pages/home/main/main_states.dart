@@ -9,6 +9,8 @@ class ResultState extends BaseMainState {
   ResultState(this.balance);
 }
 
+class LogoutState extends BaseMainState {}
+
 class ErrorMainState extends BaseMainState {
   final String message;
   final dynamic error;

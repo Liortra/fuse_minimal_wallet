@@ -27,7 +27,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        // physics: NeverScrollableScrollPhysics(),
         itemCount: widget.listView.length,
         itemBuilder: (context, index) {
           final item = widget.listView[index];
@@ -39,11 +39,23 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                 vertical: SizeConfig.spacing_small_vertical,
                 horizontal: SizeConfig.spacing_medium_horizontal,),
               title: Text(item.label),
+              // title: getLabel(item.label),
               leading: CircleAvatar(
                 backgroundImage: AssetImage("assets/images/icon.png"),
               ),
             ),
           );
+        });
+  }
+  
+  Widget getLabel(label){
+    return FutureBuilder<String>(
+        future: label,
+        builder: (context, snapshot){
+          if(snapshot.connectionState == ConnectionState.done)
+            return snapshot.hasData ? Text("${snapshot.data!}") : Text("Empty");
+          else
+            return Container();
         });
   }
 }

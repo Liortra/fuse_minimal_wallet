@@ -17,4 +17,8 @@ class BalanceRepository {
               .then((_) => _local.loadBalance());
     });
   }
+
+  Future<void> logout(){
+    return _local.deleteUserAddress();
+  }
 }

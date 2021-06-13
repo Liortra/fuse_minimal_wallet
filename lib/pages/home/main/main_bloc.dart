@@ -23,11 +23,30 @@ class MainBloc extends Cubit<BaseMainState>{
      emit(ErrorMainState(message, error: e));
    }
   }
+  
+  logout() async {
+    try{
+      _balanceRepository.logout();
+      emit(LogoutState());
+    } catch(e,stackTrace){
+      var message = "Catch: Something wrong, check again $e";
+      print("show error: $e stack: $stackTrace");
+      emit(ErrorMainState(message, error: e));
+    }
+  }
 
   String checkBalance(String value) {
     var length =  value.length - Const.DECIMAL;
+    var balance = value;
+    if(length <= 0) {
+      var size = length.abs() + 1;
+      for (var i = 0; i < size; i++) {
+        balance = "0" + balance;
+        length++;
+      }
+    }
     return value.substring(length).length > Const.REMAINDER ?
-    StringUtils.addCharAtPosition("${value.substring(0,length + Const.REMAINDER)}", ".", length) :
-    StringUtils.addCharAtPosition("$value", ".", length);
+    StringUtils.addCharAtPosition(balance.substring(0,length + Const.REMAINDER), ".", length) :
+    StringUtils.addCharAtPosition(balance, ".", length);
   }
 }

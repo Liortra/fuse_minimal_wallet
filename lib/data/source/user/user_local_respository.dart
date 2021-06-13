@@ -23,4 +23,9 @@ class UserLocalRepository implements UserLocalDataSource {
     return _storage.setAddressHash(userAddress);
   }
 
+  @override
+  Future<void> deleteUserAddress() {
+    return _storage.deleteAddressHash();
+  }
+
 }
